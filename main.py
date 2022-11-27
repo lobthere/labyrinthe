@@ -10,7 +10,7 @@ import random as r
 """""""""
 
 """init"""
-INIT_SQUARE = 25
+INIT_SQUARE = 20
 INIT_RANGE_LABYRIHTHE = 40
 
 """the Table"""
@@ -53,6 +53,34 @@ random_x = X_SIDE[random_x]
 random_y = r.randint(1, INIT_RANGE_LABYRIHTHE - 1)
 random_y = X_SIDE[random_y]
 
+
+for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
+    if x % 2 == 0:
+        for z in range(0, INIT_RANGE_LABYRIHTHE, 1):
+            POSITION[0] = X_SIDE[x]
+            POSITION[1] = Y_SIDE[y]
+            COLOR = 'black'
+            pygame.draw.rect(surface, COLOR, [POSITION[0], POSITION[1], INIT_SQUARE, INIT_SQUARE])
+            SAVE[count] = [POSITION[0], POSITION[1], POSITION[2], POSITION[3]]
+            y+=1
+            count += 1
+            pygame.display.update()
+    if x % 2 == 1:
+        for z in range(0, INIT_RANGE_LABYRIHTHE, 1):
+            POSITION[0] = X_SIDE[x]
+            POSITION[1] = Y_SIDE[y]
+            COLOR = 'green'
+            pygame.draw.rect(surface, COLOR, [POSITION[0], POSITION[1], INIT_SQUARE, INIT_SQUARE])
+            SAVE[count] = [POSITION[0], POSITION[1], POSITION[2], POSITION[3]]
+            y += 1
+            count += 1
+            pygame.display.update()
+    x += 1
+    y = 0
+    count_2 = 0
+
+pygame.display.update()
+"""
 for i in range(0, INIT_RANGE_LABYRIHTHE , 1):
     for z in range(0, INIT_RANGE_LABYRIHTHE , 1):
         POSITION[0] = X_SIDE[x]
@@ -107,8 +135,7 @@ for i in range(0, INIT_RANGE_LABYRIHTHE , 1):
     count_2 += 1
     x = 0
     y += 1
-
-pygame.display.update()
+"""
 
 
 print('fin')
