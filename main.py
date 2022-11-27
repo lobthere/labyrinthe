@@ -43,14 +43,6 @@ x = 0
 y = 0
 count = 0
 count_2 = 0
-random_x = 0
-random_y = 0
-
-random_x = r.randint(1, INIT_RANGE_LABYRIHTHE - 1)
-random_x = X_SIDE[random_x]
-
-random_y = r.randint(1, INIT_RANGE_LABYRIHTHE - 1)
-random_y = X_SIDE[random_y]
 
 
 for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
@@ -104,6 +96,9 @@ for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
             elif POSITION[2] == 4:
                 COLOR = 'black'
             
+            if POSITION[2] == 1:
+                POSITION[3] = r.randint(0, 9)
+            print(POSITION[3])
             pygame.draw.rect(surface, COLOR, [POSITION[0], POSITION[1], INIT_SQUARE, INIT_SQUARE])
             count_2 += 1
             SAVE[count] = [POSITION[0], POSITION[1], POSITION[2], POSITION[3]]
