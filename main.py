@@ -105,8 +105,7 @@ for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
                 POSITION[2] = 0
             elif count_2 % 2 == 1:
                 POSITION[2] = 1
-                POSITION[3] = r.randint(0, 9)
-                print(POSITION[3])
+                POSITION[3] = r.randint(1, 9)
 
             if POSITION[2] == 0:
                 COLOR = 'black'
@@ -130,6 +129,19 @@ for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
     count_2 = 0
 
 pygame.display.update()
+
+count_4 = 0
+save_i = list(range(0, INIT_RANGE_LABYRIHTHE * INIT_SQUARE + INIT_RANGE_LABYRIHTHE * INIT_SQUARE * 1000, 1))
+
+for i in range(0, INIT_RANGE_LABYRIHTHE * INIT_RANGE_LABYRIHTHE):
+    if SAVE[i][2] == 1:
+        save_i[count_4] = [i]
+        count_4 += 1
+
+
+random_2 = r.randint(0, count_4)
+temp = SAVE[count_4]
+
 
 print('fin')
 
