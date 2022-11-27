@@ -11,7 +11,7 @@ import random as r
 
 """init"""
 INIT_SQUARE = 20
-INIT_RANGE_LABYRIHTHE = 40
+INIT_RANGE_LABYRIHTHE = 41
 
 """the Table"""
 X_SIDE = list(range(INIT_SQUARE, (INIT_RANGE_LABYRIHTHE + 2) * INIT_SQUARE, INIT_SQUARE))
@@ -80,63 +80,6 @@ for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
     count_2 = 0
 
 pygame.display.update()
-"""
-for i in range(0, INIT_RANGE_LABYRIHTHE , 1):
-    for z in range(0, INIT_RANGE_LABYRIHTHE , 1):
-        POSITION[0] = X_SIDE[x]
-        POSITION[1] = Y_SIDE[y]
-
-        if POSITION[0] == INIT_SQUARE:
-            if POSITION[1] == random_x:
-                POSITION[2] = 2
-            else:
-                POSITION[2] = 4
-        
-        elif POSITION[1] == INIT_SQUARE:
-            POSITION[2] = 4
-        
-        elif POSITION[0] == INIT_SQUARE * INIT_RANGE_LABYRIHTHE:
-            if POSITION[1] == random_y:
-                POSITION[2] = 3
-            else:
-                POSITION[2] = 4
-        
-        elif POSITION[1] == INIT_SQUARE * INIT_RANGE_LABYRIHTHE:
-            POSITION[2] = 4
-        
-        else :
-            if ((POSITION[0] / INIT_SQUARE) + 1 )%2 == 0:
-                POSITION[2] = 0
-            elif ((POSITION[1] / INIT_SQUARE) + 1) %2 == 0:
-                POSITION[2] = 0
-            else:
-                POSITION[2] = 1
-
-        if POSITION[2] == 4:
-            COLOR = 'black'
-
-        elif POSITION[2] == 2:
-            COLOR = 'green'
-
-        elif POSITION[2] == 3:
-            COLOR = 'red'
-        
-        elif POSITION[2] == 1:
-            COLOR = 'white'
-        elif POSITION[2] == 0:
-            COLOR = 'black'
-
-
-        pygame.draw.rect(surface, COLOR, [POSITION[0], POSITION[1], INIT_SQUARE, INIT_SQUARE])
-        SAVE[count] = [POSITION[0], POSITION[1], POSITION[2]]
-        count += 1
-        count_2 += 1
-        x += 1
-    count_2 += 1
-    x = 0
-    y += 1
-"""
-
 
 print('fin')
 
