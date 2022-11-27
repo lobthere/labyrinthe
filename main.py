@@ -11,7 +11,7 @@ import random as r
 
 """init"""
 INIT_SQUARE = 20
-INIT_RANGE_LABYRIHTHE = 41
+INIT_RANGE_LABYRIHTHE = 41 #ne choisir que des nombres impaires et superieur a 12
 
 """the Table"""
 X_SIDE = list(range(INIT_SQUARE, (INIT_RANGE_LABYRIHTHE + 2) * INIT_SQUARE, INIT_SQUARE))
@@ -43,7 +43,6 @@ x = 0
 y = 0
 count = 0
 count_2 = 0
-count_3 = 0
 random_x = 0
 random_y = 0
 
@@ -59,7 +58,26 @@ for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
         for z in range(0, INIT_RANGE_LABYRIHTHE, 1):
             POSITION[0] = X_SIDE[x]
             POSITION[1] = Y_SIDE[y]
-            COLOR = 'black'
+
+
+            if POSITION[0] == INIT_SQUARE:
+                POSITION[2] = 4
+            elif POSITION[0] == INIT_SQUARE * INIT_RANGE_LABYRIHTHE:
+                POSITION[2] = 4
+            elif POSITION[1] == INIT_SQUARE:
+                POSITION[2] = 4
+            elif POSITION[1] == INIT_SQUARE * INIT_RANGE_LABYRIHTHE:
+                POSITION[2] = 4
+            else :
+                POSITION[2] = 0
+            
+
+            if POSITION[2] == 0:
+                COLOR = 'black'
+            elif POSITION[2] == 4:
+                COLOR = 'black'
+
+            
             pygame.draw.rect(surface, COLOR, [POSITION[0], POSITION[1], INIT_SQUARE, INIT_SQUARE])
             SAVE[count] = [POSITION[0], POSITION[1], POSITION[2], POSITION[3]]
             y+=1
@@ -69,12 +87,30 @@ for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
         for z in range(0, INIT_RANGE_LABYRIHTHE, 1):
             POSITION[0] = X_SIDE[x]
             POSITION[1] = Y_SIDE[y]
-            COLOR = 'green'
+
+            if POSITION[1] == INIT_SQUARE:
+                POSITION[2] = 4
+            elif POSITION[1] == INIT_SQUARE * INIT_RANGE_LABYRIHTHE:
+                POSITION[2] = 4
+            elif count_2 % 2 == 0:
+                POSITION[2] = 0
+            elif count_2 % 2 == 1:
+                POSITION[2] = 1
+
+            if POSITION[2] == 0:
+                COLOR = 'black'
+            elif POSITION[2] == 1:
+                COLOR = 'white'
+            elif POSITION[2] == 4:
+                COLOR = 'black'
+            
             pygame.draw.rect(surface, COLOR, [POSITION[0], POSITION[1], INIT_SQUARE, INIT_SQUARE])
+            count_2 += 1
             SAVE[count] = [POSITION[0], POSITION[1], POSITION[2], POSITION[3]]
             y += 1
             count += 1
             pygame.display.update()
+        count_2 = 0
     x += 1
     y = 0
     count_2 = 0
