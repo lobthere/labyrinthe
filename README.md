@@ -1,1 +1,1 @@
-Here is a little project where i m making a random labyrinthe using python
+Here is a little project where i m making a random labyrinthe using python<br> you can join me on discord : lobthere#0001
