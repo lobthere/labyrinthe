@@ -43,7 +43,13 @@ x = 0
 y = 0
 count = 0
 count_2 = 0
-
+count_3 = 0
+random = 2
+random_2 = 2
+while random % 2 != 1:
+    random = r.randint(0, INIT_RANGE_LABYRIHTHE - 1)
+while random_2 % 2 != 1:
+    random_2 = r.randint(0, INIT_RANGE_LABYRIHTHE - 1)
 
 for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
     if x % 2 == 0:
@@ -53,9 +59,18 @@ for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
 
 
             if POSITION[0] == INIT_SQUARE:
-                POSITION[2] = 4
+                if z != 0:
+                    if z == random:
+                        POSITION[2] = 2
+                    else:
+                        POSITION[2] = 4
+                else:
+                    POSITION[2] = 4
             elif POSITION[0] == INIT_SQUARE * INIT_RANGE_LABYRIHTHE:
-                POSITION[2] = 4
+                if count_3 == random_2:
+                    POSITION[2] = 3
+                else:
+                    POSITION[2] = 4
             elif POSITION[1] == INIT_SQUARE:
                 POSITION[2] = 4
             elif POSITION[1] == INIT_SQUARE * INIT_RANGE_LABYRIHTHE:
@@ -64,16 +79,18 @@ for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
                 POSITION[2] = 0
             
 
-            if POSITION[2] == 0:
+            if POSITION[2] == 0 or POSITION[2] == 4:
                 COLOR = 'black'
-            elif POSITION[2] == 4:
-                COLOR = 'black'
-
+            elif POSITION[2] == 2:
+                COLOR = 'green'
+            elif POSITION[2] == 3:
+                COLOR = 'red'
             
             pygame.draw.rect(surface, COLOR, [POSITION[0], POSITION[1], INIT_SQUARE, INIT_SQUARE])
             SAVE[count] = [POSITION[0], POSITION[1], POSITION[2], POSITION[3]]
             y+=1
             count += 1
+            count_3 +=1
             pygame.display.update()
     if x % 2 == 1:
         for z in range(0, INIT_RANGE_LABYRIHTHE, 1):
@@ -88,6 +105,8 @@ for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
                 POSITION[2] = 0
             elif count_2 % 2 == 1:
                 POSITION[2] = 1
+                POSITION[3] = r.randint(0, 9)
+                print(POSITION[3])
 
             if POSITION[2] == 0:
                 COLOR = 'black'
@@ -98,7 +117,6 @@ for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
             
             if POSITION[2] == 1:
                 POSITION[3] = r.randint(0, 9)
-            print(POSITION[3])
             pygame.draw.rect(surface, COLOR, [POSITION[0], POSITION[1], INIT_SQUARE, INIT_SQUARE])
             count_2 += 1
             SAVE[count] = [POSITION[0], POSITION[1], POSITION[2], POSITION[3]]
@@ -108,6 +126,7 @@ for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
         count_2 = 0
     x += 1
     y = 0
+    count_3 = 0
     count_2 = 0
 
 pygame.display.update()
