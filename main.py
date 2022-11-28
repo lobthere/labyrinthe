@@ -140,7 +140,25 @@ for i in range(0, INIT_RANGE_LABYRIHTHE * INIT_RANGE_LABYRIHTHE):
 
 
 random_2 = r.randint(0, count_4)
-temp = SAVE[count_4]
+OwO = save_i[random_2]
+OwO = str(OwO)
+print(OwO)
+characters = '[]'
+for i in range(0, len(characters), 1):
+    OwO = OwO.replace(characters[i], '')
+OwO = int(OwO)
+print(SAVE[OwO])
+a = 0
+while a != 0:
+    random_3 = r.randint(0, 3)
+    if random_3 == 0:
+        temp = SAVE[OwO]
+    elif random_3 == 1:
+        print('b')
+    elif random_3 == 2:
+        print('c')
+    elif random_3 == 3:
+        print('d')
 
 
 print('fin')
