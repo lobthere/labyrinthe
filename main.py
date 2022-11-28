@@ -193,6 +193,12 @@ while a != 100:
 
         pygame.display.update()
 
+    elif random_3 == 1:
+        pass
+
+    elif random_3 == 2:
+        pass
+    
     elif random_3 == 3:
         OwO = save_i[random_2]
         OwO = str(OwO)
