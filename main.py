@@ -142,24 +142,51 @@ for i in range(0, INIT_RANGE_LABYRIHTHE * INIT_RANGE_LABYRIHTHE):
 random_2 = r.randint(0, count_4)
 OwO = save_i[random_2]
 OwO = str(OwO)
-print(OwO)
 characters = '[]'
 for i in range(0, len(characters), 1):
     OwO = OwO.replace(characters[i], '')
 OwO = int(OwO)
-print(SAVE[OwO])
-a = 0
+
+a = 1
+
+temp = SAVE[OwO]
+temp2 = SAVE[OwO - 2]
+temp3 = SAVE[OwO - 1]
+if temp2[1] == temp[1] - INIT_SQUARE * 2:
+    if temp[3] != temp2[3]:
+        random_3 = r.randint(0, 1)
+        if random_3 == 0:
+            temp[3] = temp2[3]
+            temp3[3] = temp[3]
+            temp3[2] = temp[2]
+        elif random_3 == 1:
+            temp2[3] = temp[3]
+            temp3[3] = temp[3]
+            temp3[2] = temp[2]
+    else:
+        pass
+if temp3[2] == 1:
+    COLOR = 'white'
+pygame.draw.rect(surface, COLOR, [temp3[0], temp3[1], INIT_SQUARE, INIT_SQUARE])
+
+pygame.display.update()
+
+
+"""
 while a != 0:
     random_3 = r.randint(0, 3)
     if random_3 == 0:
         temp = SAVE[OwO]
     elif random_3 == 1:
-        print('b')
+        temp = SAVE[OwO]
+        temp2 = SAVE[OwO - 1]
+        if temp[0] == temp[0] - 40:
+            print("youhou")
     elif random_3 == 2:
         print('c')
     elif random_3 == 3:
         print('d')
-
+"""
 
 print('fin')
 
