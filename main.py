@@ -1,5 +1,6 @@
 import pygame
 import random as r
+import secrets as s
 
 """explaining""""""
 0 = wall
@@ -47,9 +48,9 @@ count_3 = 0
 random = 2
 random_2 = 2
 while random % 2 != 1:
-    random = r.randint(0, INIT_RANGE_LABYRIHTHE - 1)
+    random = s.randbelow(INIT_RANGE_LABYRIHTHE - 1)
 while random_2 % 2 != 1:
-    random_2 = r.randint(0, INIT_RANGE_LABYRIHTHE - 1)
+    random_2 = s.randbelow(INIT_RANGE_LABYRIHTHE - 1)
 
 for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
     if x % 2 == 0:
@@ -105,7 +106,7 @@ for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
                 POSITION[2] = 0
             elif count_2 % 2 == 1:
                 POSITION[2] = 1
-                POSITION[3] = r.randint(1, 9)
+                POSITION[3] = s.randbelow(9)
 
             if POSITION[2] == 0:
                 COLOR = 'black'
@@ -115,7 +116,7 @@ for i in range(0, INIT_RANGE_LABYRIHTHE, 1):
                 COLOR = 'black'
             
             if POSITION[2] == 1:
-                POSITION[3] = r.randint(0, 9)
+                POSITION[3] = s.randbelow(9)
             pygame.draw.rect(surface, COLOR, [POSITION[0], POSITION[1], INIT_SQUARE, INIT_SQUARE])
             count_2 += 1
             SAVE[count] = [POSITION[0], POSITION[1], POSITION[2], POSITION[3]]
@@ -139,12 +140,12 @@ for i in range(0, INIT_RANGE_LABYRIHTHE * INIT_RANGE_LABYRIHTHE):
         save_i[count_4] = [i]
         count_4 += 1
 
-while a != 50:
-    random_2 = r.randint(0, count_4)
+while a != 500:
+    random_2 = s.randbelow(count_4)
     while random_2 in list(range(0, INIT_SQUARE * INIT_SQUARE, INIT_SQUARE)):
-        random_2 = r.randint(0, count_4)
+        random_2 = s.randbelow(count_4)
 
-    random_3 = r.randint(0, 3)
+    random_3 = s.randbelow(3)
 
     if random_3 == 0:
         OwO = save_i[random_2]
@@ -159,7 +160,7 @@ while a != 50:
         temp3 = SAVE[OwO - 1]
         if temp2[1] == temp[1] - INIT_SQUARE * 2:
             if temp[3] != temp2[3]:
-                random_3 = r.randint(0, 1)
+                random_3 = s.randbelow(1)
                 if random_3 == 0:
                     temp[3] = temp2[3]
                     temp3[3] = temp[3]
@@ -168,9 +169,9 @@ while a != 50:
                     temp2[3] = temp[3]
                     temp3[3] = temp[3]
                     temp3[2] = temp[2]
-                    SAVE[OwO - 2] = temp2
-                    SAVE[OwO - 1] = temp3
-                    SAVE[OwO] = temp
+                SAVE[OwO - 2] = temp2
+                SAVE[OwO - 1] = temp3
+                SAVE[OwO] = temp
             else:
                 pass
 
@@ -181,18 +182,11 @@ while a != 50:
 
         pygame.display.update()
     
-    elif random_3 == 1:
-        OwO = save_i[random_2]
-        OwO = str(OwO)
-        characters = '[]'
-        for i in range(0, len(characters), 1):
-            OwO = OwO.replace(characters[i], '')
-        OwO = int(OwO)
-
-        
     a += 1
 
-
+with open("test.txt", 'w') as output:
+    for row in SAVE:
+        output.write(str(row) + '\n')
 
 print('fin')
 
