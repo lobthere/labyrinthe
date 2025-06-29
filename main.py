@@ -139,10 +139,14 @@ for i in range(0, INIT_RANGE_LABYRIHTHE * INIT_RANGE_LABYRIHTHE):
         save_i[count_4] = [i]
         count_4 += 1
 
-while a != 10000:
+while a != 1100:
     random_2 = s.randbelow(count_4 + 1)
     while random_2 in list(range(0, INIT_SQUARE * INIT_SQUARE, INIT_SQUARE)):
         random_2 = s.randbelow(count_4 + 1)
+
+    if random_2 <= INIT_RANGE_LABYRIHTHE * 2:
+        pass
+    
 
     random_3 = s.randbelow(3 + 1)
 
@@ -202,14 +206,12 @@ while a != 10000:
         OwO = int(OwO)
 
         temp = SAVE[OwO]
-        if temp[0] == INIT_RANGE_LABYRIHTHE - (INIT_SQUARE * 2):
+
+        if temp[0] == INIT_SQUARE * 2:
             pass
-        elif temp[0] == INIT_SQUARE * 2:
-            print(temp[0] - INIT_SQUARE * 2)
         else :
             temp2 = temp[0] - INIT_SQUARE * 2
             temp3 = temp[0] - INIT_SQUARE
-
             save_i_temp2 = 0
             save_i_temp3 = 0
 
@@ -257,7 +259,65 @@ while a != 10000:
         pygame.display.update()
 
     elif random_3 == 2:
-        pass
+        OwO = save_i[random_2]
+        OwO = str(OwO)
+        characters = '[]'
+        for i in range(0, len(characters), 1):
+            OwO = OwO.replace(characters[i], '')
+        OwO = int(OwO)
+
+        temp = SAVE[OwO]
+
+        if temp[0] == INIT_SQUARE * 2:
+            pass
+        else :
+            temp2 = temp[0] + INIT_SQUARE * 2
+            temp3 = temp[0] - INIT_SQUARE
+            save_i_temp2 = 0
+            save_i_temp3 = 0
+
+            for i in range(0, INIT_RANGE_LABYRIHTHE * INIT_RANGE_LABYRIHTHE):
+                if SAVE[i][0] == temp2:
+                    if SAVE[i][1] == temp[1]:
+                        temp2 = SAVE[i]
+                        save_i_temp2 = i
+                        break
+
+            for i in range(0, INIT_RANGE_LABYRIHTHE * INIT_RANGE_LABYRIHTHE, 1):
+                if SAVE[i][0] == temp3:
+                    if SAVE[i][1] == temp[1]:
+                        temp3 = SAVE[i]
+                        save_i_temp3 = i
+                        break
+
+            if temp[3] != temp2[3]:
+                random_4 = s.randbelow(1 + 1)
+
+                if random_4 == 0:
+                    temp2[3] = temp[3]
+                    temp3[3] = temp[3]
+                    temp3[2] = temp[2]
+
+                    SAVE[OwO] = temp
+                    SAVE[save_i_temp2] = temp2
+                    SAVE[save_i_temp3] = temp3
+
+                elif random_4 == 1:
+                    temp[3] = temp2[3]
+                    temp3[3] = temp2[3]
+                    temp3[2] = temp2[2]
+
+                    SAVE[OwO] = temp
+                    SAVE[save_i_temp2] = temp2
+                    SAVE[save_i_temp3] = temp3
+            else: 
+                pass
+
+
+            if SAVE[save_i_temp3][2] == 1:
+                COLOR = 'white'
+            pygame.draw.rect(surface, COLOR, [temp3[0], temp3[1], INIT_SQUARE, INIT_SQUARE])
+        pygame.display.update()
 
     elif random_3 == 3:
         OwO = save_i[random_2]
@@ -324,7 +384,7 @@ while running:
     """check if there is an event"""
     for event in pygame.event.get():
 
-        """if event equal exit : we stop the boucle"""
+        """if event equal exit : we stop the cycle"""
         if event.type == pygame.QUIT:
             running = False
 
